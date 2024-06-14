@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Field Animation</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="input-container">
+        <label id="label" for="username" class="input-label">Username</label>
+        <div id="underline" class="input-underline"></div>
+        <input type="text" id="input-username" class="input-field">
+    </div>
+
+    <script>
+
+        let label = document.getElementById('label');
+        let underline = document.getElementById('underline');
+        let inputField = document.getElementById('input-username');
+
+        label.onclick = function () {
+            label.classList.add('change')
+            inputField.classList.add('visible');
+            inputField.focus();
+            underline.style.opacity = '0';
+        };
+
+        inputField.onfocus = function () {
+            label.classList.add('change')
+            inputField.classList.add('visible');
+            inputField.focus();
+            underline.style.opacity = '0';
+        }
+
+        inputField.onblur = function () {
+            if (!inputField.value) {
+                label.classList.remove('change')
+                inputField.classList.remove('visible');
+                setTimeout(() => {
+                    underline.style.opacity = '1';
+                }, 300); 
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
